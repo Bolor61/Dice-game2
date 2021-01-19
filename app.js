@@ -1,25 +1,57 @@
-// toglogchiin eeljiig hadgalagch % sagch 1-r toglogchiig o, 2- r toglogchiig 1 geh temdeglii
-var activePlayer = 0;
+// togloomiin buh gazart ashiglagdah global % sagchiig end zarallaa
 
-// toglogchdiin tsugluulsan onoog hadgalah % sagch
-var scores = [0, 0];
+// ali toglogch shoo shideh be gedgiig end hadgallaa
+var activePlayer;
+// 2 toglogchiin tsugluulsan onoonuud
+var scores;
+// active player iin tsugluulj bgaa onoo
+var roundScore;
 
-// toglogchiin eeljin deer tsugluulj bgaa onoog hadgalagch % sagch
-var roundScore = 0;
-// Shoonii ali talaaraa buusniig hadgalah % sagch heregtei 1-6 gesen utgiig ene % sagchid sanamsarguigeer uusgej ugnu.
-
-var diceNumber = Math.floor(Math.random() * 6) + 1;
-
-// window.document.querySelector('#score-0').textContent = dice;
-
-// programm ehlehed beltgii
-document.getElementById('score-0').textContent = '0';
-document.getElementById('score-1').textContent = '0';
-document.getElementById('current-0').textContent = '0';
-document.getElementById('current-1').textContent = '0';
+// shoonii zurgiig uzuuleh elementiig DOM - oos haij olood end hadgalya
 
 var diceDom = document.querySelector('.dice');
-diceDom.style.display = 'none';
+
+// Togloomiig ehluulne
+initGame();
+
+// Togloomiig shineer ehlehed beltgene
+
+function initGame() {
+  // toglogchiin eeljiig hadgalagch % sagch 1-r toglogchiig o, 2- r toglogchiig 1 geh temdeglii
+  activePlayer = 0;
+
+  // toglogchdiin tsugluulsan onoog hadgalah % sagch
+  scores = [0, 0];
+
+  // toglogchiin eeljin deer tsugluulj bgaa onoog hadgalagch % sagch
+  roundScore = 0;
+  // Shoonii ali talaaraa buusniig hadgalah % sagch heregtei 1-6 gesen utgiig ene % sagchid sanamsarguigeer uusgej ugnu.
+
+  // var diceNumber = Math.floor(Math.random() * 6) + 1;
+
+  // window.document.querySelector('#score-0').textContent = dice;
+
+  // programm ehlehed beltgii
+  document.getElementById('score-0').textContent = '0';
+  document.getElementById('score-1').textContent = '0';
+  document.getElementById('current-0').textContent = '0';
+  document.getElementById('current-1').textContent = '0';
+
+  //toglogchdiin neriig butsaj gargah
+  document.getElementById('name-0').textContent = 'Player 1';
+  document.getElementById('name-1').textContent = 'Player 2';
+
+  document.querySelector('.player-0-panel').classList.remove('winner');
+  document.querySelector('.player-1-panel').classList.remove('winner');
+
+  document.querySelector('.player-0-panel').classList.remove('active');
+  document.querySelector('.player-1-panel').classList.remove('active');
+
+  document.querySelector('.player-0-panel').classList.add('active');
+
+  diceDom.style.display = 'none';
+}
+
 // shoog shideh event listener
 document.querySelector('.btn-roll').addEventListener('click', function () {
   // 1-6 dotor sanamsargui 1 too gargaj avna
@@ -99,7 +131,5 @@ function switchToNextPlayer() {
   diceDom.style.display = 'none';
 }
 
-// shine togloom ehluuleh tovchiin event listener
-document.querySelector('.btn-new').addEventListener('click', function () {
-  alert('clicked');
-});
+// NEW GAME tovchiig darhiin bol shine togloom ehluuleh tovchiin event listener
+document.querySelector('.btn-new').addEventListener('click', initGame);
