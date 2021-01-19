@@ -1,5 +1,5 @@
 // toglogchiin eeljiig hadgalagch % sagch 1-r toglogchiig o, 2- r toglogchiig 1 geh temdeglii
-var activePlayer = 1;
+var activePlayer = 0;
 
 
 
@@ -36,11 +36,57 @@ document.getElementById('current-1').textContent = '0';
 
 var diceDom = document.querySelector('.dice');
 diceDom.style.display = 'none'
-
+// shoog shideh event listener
  document.querySelector('.btn-roll').addEventListener('click', function () { 
+     // 1-6 dotor sanamsargui 1 too gargaj avna
     var diceNumber = Math.floor (Math.random()*6)+ 1;
+    // shoonii zurgiig web deer gargaj irne 
     diceDom .style.display = 'block';
-    diceDom .src = 'dice-' + diceNumber + '.png';    
+
+    // buusan sanamsargui toond hargalzah shoonii zurgiig web deer gargaj irne
+    diceDom .src = 'dice-' + diceNumber + '.png'; 
+    // buusan too n  negees yalgaatai bol idevhitei toglogchiin  eeljiin onsoog nemegduulne 
+    if (diceNumber !== 1){
+        // 1- ees yalgaatai too buulaa. buusan toog toglogchid nemj ugnu
+        roundScore = roundScore + diceNumber;
+        document.getElementById('current-' + activePlayer).textContent = roundScore;
+
+
+    } else {
+        // 1 buusan tul toglogchiin eeljiig ene hesegt solij ugnu.
+
+
+        //ene toglogchiin eeljindee tsugluulsan onoog 0 bolgo
+        
+        roundScore = 0
+        document.getElementById('current-' + activePlayer).textContent = 0;
+
+        // toglogchiin eeljiig nuguu toglogch ruu shiljuulne
+
+
+        // herev idevhtei toglogch 0 baival idevhitei toglochiig 1 bolgo
+        // ugui bol idevhitei toglogchiig 0 bolgo
+        activePlayer === 0 ? (activePlayer = 1) :(activePlayer = 0)
+
+        // ulaan tsagiig shiljuuleh codiig hiie
+        document.querySelector('.player-0-panel').classList.toggle('active')
+        document.querySelector('.player-1-panel').classList.toggle('active')
+
+
+        // shoog tur alga bolgoh
+
+        diceDom.style.display ='none'
+
+        /* deerh tei yag adilhan 
+        if (activePlayer === 0){
+            activePlayer = 1;
+
+        }else{
+            activePlayer= 0
+        }*/
+       
+    }
+    
     
  }
 )
