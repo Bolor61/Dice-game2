@@ -103,7 +103,7 @@ document.querySelector('.btn-hold').addEventListener('click', function () {
       scores[activePlayer];
 
     //ug toglogch hojson esehiig shalgah (onoo n 100- c ih eseh )
-    if (scores[activePlayer] >= 20) {
+    if (scores[activePlayer] >= 100) {
       // Togloomiig duussan tuluvt oruulna
 
       isNewGame = false;
